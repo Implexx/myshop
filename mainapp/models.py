@@ -13,17 +13,28 @@ class Team(models.Model):
         return self.name
 
 
-class Product(models.Model):
-    name = models.CharField(verbose_name='Наименование', max_length=32 )
-    model = models.CharField(verbose_name='Модель', max_length=32)
-    price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, default=0)
-    description = models.TextField(verbose_name='Описание', max_length=500)
+class ProductCategory(models.Model):
+    name = models.CharField(verbose_name='Наименование', max_length=64, unique=True)
+    description = models.TextField(verbose_name='Описание', max_length=500, blank=True)
 
     def __str__(self):
         return self.name
 
 
-class Images(models.Model):
+class Product(models.Model):
+    name = models.CharField(verbose_name='Наименование', max_length=64)
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    model = models.CharField(verbose_name='Модель', max_length=32)
+    price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, default=0)
+    description = models.TextField(verbose_name='Описание', max_length=500)
+    image = models.ImageField(verbose_name='Фото', upload_to='products', blank=True)
+    quantity = models.PositiveIntegerField(verbose_name='количество на складе', default=0)
+
+    def __str__(self):
+        return f'{self.name} ({self.category.name})'
+
+
+class Image(models.Model):
     image = models.ImageField(upload_to='products')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', null=True, blank=True)
 

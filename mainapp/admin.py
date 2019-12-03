@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Team, Product, Images, Review, BrandLogo
+from .models import Team, Product, Image, Review, BrandLogo
 
 
 # Register your models here.
@@ -9,7 +9,7 @@ admin.site.register(BrandLogo)
 
 
 class ProductImageInline(admin.TabularInline):
-    model = Images
+    model = Image
     extra = 3
 
 
