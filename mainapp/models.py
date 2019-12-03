@@ -26,7 +26,7 @@ class Product(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     model = models.CharField(verbose_name='Модель', max_length=32)
     price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, default=0)
-    description = models.TextField(verbose_name='Описание', max_length=500)
+    description = models.TextField(verbose_name='Описание', max_length=500, blank=True, null=True)
     image = models.ImageField(verbose_name='Фото', upload_to='products', blank=True)
     quantity = models.PositiveIntegerField(verbose_name='количество на складе', default=0)
 

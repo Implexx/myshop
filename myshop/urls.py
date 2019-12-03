@@ -27,5 +27,6 @@ urlpatterns = [
     path('', include('authapp.urls', namespace='auth')),
 ]
 
+# чтобы Джанго раздавал медиафайлы на этапе разработки
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
