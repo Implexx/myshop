@@ -1,0 +1,11 @@
+{#TODO#}
+{#Переделать ссылку вместо Контактов на нужный тайтл#}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-menu">
+            <li><a href="{% url 'main:main' %}">Home</a></li>
+            <li class="{% if request.resolver_match.url_name == 'main'%}active{% endif %}"><a href="#">{{ title }}</a></li>
+        </ul>
+    </div>
+</div>
