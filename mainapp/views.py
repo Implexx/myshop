@@ -1,15 +1,7 @@
 from django.shortcuts import render
-from .models import Team, Review, BrandLogo
+from .models import Team, Review, BrandLogo, Product
 
 # Create your views here.
-
-
-# def base_view(request):
-#     footer_my_account = {'My Account': {'text': 'My Account', 'href': 'my_account'},
-#                          'Order History': '#', 'Wish List': 'wishlist', 'Search Terms': '#', 'Returns': '#'}
-#
-#     context_list = {'footer_my_account': footer_my_account, 'text': 'Qwertydf'}
-#     return render(request, 'base.html', context_list)
 
 
 def main_view(request):
@@ -18,7 +10,7 @@ def main_view(request):
 
 
 def about_view(request):
-    title = 'About'
+    title = 'О команде'
     all_team = Team.objects.all()[:4]
     img_alt = 'teammate_photo'
     context_list = {'title': title, 'all_team': all_team, 'img_alt': img_alt}
@@ -53,7 +45,10 @@ def my_account_view(request):
 def product_details_view(request):
     title = 'Детальная информация'
     all_reviews = Review.objects.all()
-    context_list = {'title': title, 'all_reviews': all_reviews}
+    related_products = Product.objects.all()[:6]
+
+    context_list = {'title': title, 'all_reviews': all_reviews,
+                    'related_products': related_products}
     return render(request, 'product-details.html', context_list)
 
 

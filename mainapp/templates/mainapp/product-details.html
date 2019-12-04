@@ -264,125 +264,25 @@
                         <div class="product carosel-navigation">
                             <div class="row">
                                 <div class="active-product-carosel">
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/3bg.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Various Versions</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$80.00</span>
+
+                                    {% for product in related_products %}
+                                        <div class="col-xs-12">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="#">
+                                                        <img class="primary-img" src="{{ product.image.url }}" alt="Product">
+                                                    </a>
+                                                </div>
+                                                <div class="product-description">
+                                                    <h5><a href="#">{{ product.name }}</a></h5>
+                                                    <div class="price-box">
+                                                        <span class="price">{{ product.price }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- End Single-Product -->
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/11.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Trid Palm</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$79.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-Product -->
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/1.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Established Fact</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$75.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-Product -->
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/2.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Trid Palm</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$95.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-Product -->
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/13.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Established Fact</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$82.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-Product -->
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/10.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Trid Palm</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$99.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-Product -->
-                                    <!-- Start Single-Product -->
-                                    <div class="col-xs-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="#">
-                                                    <img class="primary-img" src="{% static 'img/product/mediam/10bg.jpg' %}" alt="Product">
-                                                </a>
-                                            </div>
-                                            <div class="product-description">
-                                                <h5><a href="#">Various Versions</a></h5>
-                                                <div class="price-box">
-                                                    <span class="price">$95.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-Product -->
+                                    {% endfor %}
+
                                 </div>
                             </div>
 
