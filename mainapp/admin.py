@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Team, Product, Image, Review, BrandLogo
+from .models import Team, Product, ProductCategory, Image, Review, BrandLogo
 
 
 # Register your models here.
 admin.site.register(Team)
 admin.site.register(Review)
 admin.site.register(BrandLogo)
+admin.site.register(ProductCategory)
 
 
 class ProductImageInline(admin.TabularInline):
