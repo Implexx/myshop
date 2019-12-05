@@ -4,6 +4,9 @@ from django import forms
 
 
 class ShopUserLoginForm(AuthenticationForm):
+    """
+    форма логина юзера на модели ShopUser
+    """
     class Meta:
         model = ShopUser
         fields = ('username', 'password', 'age')
@@ -15,6 +18,9 @@ class ShopUserLoginForm(AuthenticationForm):
 
 
 class ShopUserRegisterForm(UserCreationForm):
+    """
+    Форма регистрации юзера на модели ShopUser
+    """
     class Meta:
         model = ShopUser
         fields = ('username', 'first_name', 'password1', 'password2', 'email', 'age', 'avatar')
@@ -25,6 +31,7 @@ class ShopUserRegisterForm(UserCreationForm):
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
 
+    # Проверка возраста
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 18:
@@ -33,6 +40,9 @@ class ShopUserRegisterForm(UserCreationForm):
 
 
 class ShopUserEditForm(UserChangeForm):
+    """
+    Форма редактирования юзера на модели ShopUser
+    """
     username = forms.CharField(label='Логин')
 
     class Meta:
@@ -48,6 +58,7 @@ class ShopUserEditForm(UserChangeForm):
             if field_name == 'password':
                 field.widget = forms.HiddenInput()
 
+    # Проверка возраста
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 18:

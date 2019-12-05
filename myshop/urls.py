@@ -24,7 +24,7 @@ from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls', namespace='main')),
-    path('', include('authapp.urls', namespace='auth')),
+    path('auth/', include('authapp.urls', namespace='auth')),
 ]
 
 # чтобы Джанго раздавал медиафайлы на этапе разработки

@@ -9,22 +9,22 @@ from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditF
 # Вьюха для логина
 def login_view(request):
     title = 'Вход'
-    form = ShopUserLoginForm(data=request.POST or None)
-    if request.method == 'POST':
+    login_form = ShopUserLoginForm(data=request.POST or None)
+    if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
 
         user = auth.authenticate(username=username, password=password)
-        if user:
+        if user and user.is_active:
             auth.login(request, user)
             return HttpResponseRedirect(reverse('mainapp:main'))
         else:
-            form = ShopUserLoginForm(data=request.POST or None)
-            return render(request, 'login.html', {'login_form': form})
+            login_form = ShopUserLoginForm(data=request.POST or None)
+            return render(request, 'login.html', {'login_form': login_form})
     else:
         title = 'Логин'
-        form = ShopUserLoginForm()
-        context_list = {'title': title, 'login_form': form}
+        login_form = ShopUserLoginForm()
+        context_list = {'title': title, 'login_form': login_form}
         return render(request, 'login.html', context_list)
 
 

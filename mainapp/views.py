@@ -42,13 +42,15 @@ def my_account_view(request):
     return render(request, 'my-account.html', context_list)
 
 
-def product_details_view(request):
+def product_details_view(request, pk=None):
     title = 'Детальная информация'
     all_reviews = Review.objects.all()
     related_products = Product.objects.all()[:6]
 
+    product = Product.objects.filter(pk=pk)
+
     context_list = {'title': title, 'all_reviews': all_reviews,
-                    'related_products': related_products}
+                    'related_products': related_products, 'product': product}
     return render(request, 'product-details.html', context_list)
 
 
