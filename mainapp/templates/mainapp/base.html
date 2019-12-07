@@ -93,10 +93,23 @@
 							<!-- Start Top-Link -->
 							<div class="top-link">
 								<ul class="link">
-									<li><a href="{% url 'main:my_account' %}"><i class="fa fa-user"></i> My Account</a></li>
-									<li><a href="{% url 'main:wishlist' %}"><i class="fa fa-heart"></i> Wish List (0)</a></li>
-									<li><a href="{% url 'main:checkout' %}"><i class="fa fa-share"></i> Checkout</a></li>
-									<li><a href="{% url 'main:account' %}"><i class="fa fa-unlock-alt"></i> Login</a></li>
+                                    {% if user.is_authenticated %}
+                                        <li><a href="{% url 'auth:edit' %}"><i class="fa fa-user"></i>
+                                            Редактирование юзера</a></li>
+                                        <li><a href="{% url 'main:wishlist' %}"><i class="fa fa-heart"></i>
+                                            Wish List (0)</a></li>
+                                        <li><a href="{% url 'main:checkout' %}"><i class="fa fa-share"></i>
+                                            Checkout</a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if user.is_authenticated %}
+									    <li><a href="{% url 'auth:logout' %}"><i class="fa fa-unlock-alt"></i>
+                                            Выйти</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'auth:login' %}"><i class="fa fa-unlock-alt"></i>
+                                            Войти</a></li>
+                                    {% endif %}
 								</ul>
 							</div>
 							<!-- End Top-Link -->

@@ -9,11 +9,11 @@ class ShopUserLoginForm(AuthenticationForm):
     """
     class Meta:
         model = ShopUser
-        fields = ('username', 'password', 'age')
+        # fields = ('username', 'password', 'age')
 
     def __init__(self, *args, **kwargs):
         super(ShopUserLoginForm, self).__init__(self, *args, **kwargs)
-        for filed_name, field in self.fields.items():
+        for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
 
@@ -29,7 +29,7 @@ class ShopUserRegisterForm(UserCreationForm):
         super(ShopUserRegisterForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-            field.help_text = ''
+            # field.help_text = ''
 
     # Проверка возраста
     def clean_age(self):

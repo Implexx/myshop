@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Team, Review, BrandLogo, Product
 
+
 # Create your views here.
 
 

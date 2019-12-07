@@ -1,18 +1,68 @@
-{% extends 'authapp/base.html' %}
+{% extends 'mainapp/base.html' %}
 {% load static %}
-
 
 {% block content %}
 
-    <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ edit_form.as_p }}
-        <input class="form-control" type="submit" value="сохранить">
-    </form>
-    <button class="btn btn-round form-control last">
-        <a href="{% url 'mainapp:main' %}" class="">
-            на главную
-        </a>
-    </button>
-    <div class="user_avatar"><img src="/media/{{ user.avatar }}"></div>
+    <div class="container">
+        {% include 'mainapp/includes/inc-navi.html' %}
+        <div class="row">
+            <div class="col-md-3">
+                <!-- CATEGORY-MENU-LIST START -->
+                {% include 'mainapp/includes/inc-left_category.html' %}
+                <!-- END CATEGORY-MENU-LIST -->
+            </div>
+            <div class="col-md-9">
+                <!-- START PRODUCT-BANNER -->
+                {% include 'mainapp/includes/inc-product_banner.html' %}
+                <!-- END PRODUCT-BANNER -->
+                <!-- entry-header-area start -->
+                <div class="entry-header-area">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="entry-header">
+                                <h2 class="entry-title">My Account</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- entry-header-area end -->
+                <!-- Start checkout-area -->
+                <div class="checkout-area">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Accordion start -->
+                            <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post"
+                                enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ edit_form.as_p }}
+                                <br>
+                                <input class="form-control" type="submit" value="Отредактировать" formmethod="post">
+                            </form>
+                            <button class="btn btn-round form-control">
+                                <a href="{% url 'main:main' %}" class="">
+                                    Вернуться на главную
+                                </a>
+                            </button>
+                            <div>
+                                <img src="/media/{{ user.avatar }}" alt="avatar">
+                            </div>
+                            <!-- Accordion end -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Shopping-Cart -->
+
+                <!-- My-Account-Area start -->
+                <div class="my-account-area">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- My-Account-Area end -->
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

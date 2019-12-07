@@ -11,27 +11,27 @@ def login_view(request):
     title = 'Вход'
     login_form = ShopUserLoginForm(data=request.POST or None)
     if request.method == 'POST' and login_form.is_valid():
+        print('-----POST----------')
         username = request.POST['username']
         password = request.POST['password']
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('mainapp:main'))
+            return HttpResponseRedirect(reverse('main:main'))
         else:
             login_form = ShopUserLoginForm(data=request.POST or None)
             return render(request, 'login.html', {'login_form': login_form})
     else:
-        title = 'Логин'
         login_form = ShopUserLoginForm()
-        context_list = {'title': title, 'login_form': login_form}
-        return render(request, 'login.html', context_list)
+    context_list = {'title': title, 'login_form': login_form}
+    return render(request, 'login.html', context_list)
 
 
 # Вьюха для выхода
 def logout_view(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('main'))
+    return HttpResponseRedirect(reverse('main:main'))
 
 
 # Вьюха для регистрации

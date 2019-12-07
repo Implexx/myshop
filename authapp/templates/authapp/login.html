@@ -1,18 +1,43 @@
-{% extends 'authapp/base.html' %}
+{% extends 'mainapp/base.html' %}
 {% load static %}
 
-
 {% block content %}
-    <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
-        {% csrf_token %}
-        {{ login_form.as_p }}
-        <br>
-        <input class="form-control" type="submit" value="войти">
-    </form>
-    <button class="btn btn-round form-control">
-        <a href="{% url 'auth:register' %}" class="">
-            зарегистрироваться
-        </a>
-    </button>
+    <div class="account-create-area">
+        <div class="container">
+            {% include 'mainapp/includes/inc-navi.html' %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="area-title">
+                        <h3 class="title-group gfont-1">Авторизация</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="account-create">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="account-create-box">
+                                <h2 class="box-info">Введите свои данные</h2>
+                                <div class="row">
+                                    <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
+                                        {% csrf_token %}
+                                        {{ login_form.as_p }}
+                                        <br>
+                                        <input class="form-control" type="submit" value="Войти" formmethod="post">
+                                    </form>
+                                    <button class="btn btn-round form-control">
+                                        <a href="{% url 'auth:register' %}" class="">
+                                            зарегистрироваться
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Account-Create-Area -->
 
 {% endblock %}
