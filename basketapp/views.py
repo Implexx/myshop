@@ -12,13 +12,14 @@ def basket_view(request):
 
 
 def basket_add_view(request, pk):
-    product = get_object_or_404(Product, pk)
+    product = get_object_or_404(Product, pk=pk)
     basket = Basket.objects.filter(user=request.user, product=product).first()
 
     if not basket:
         basket = Basket(user=request.user, product=product)
 
     basket.quantity += 1
+    print('product added')
     basket.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

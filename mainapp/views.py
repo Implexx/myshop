@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Team, Review, BrandLogo, Product, ProductCategory
+from basketapp.models import Basket
 from django.shortcuts import get_object_or_404
 
 
@@ -71,6 +72,11 @@ def products_view(request, pk=None):
 
     title = 'Продукты'
     links_menu = ProductCategory.objects.all()
+
+    basket = []
+    if request.user.is_authenticated:
+        basket = Basket.objects.filter(user=request.user)
+
     # если есть первичный ключ
     if pk is not None:
         print('pk <> 0')
@@ -85,17 +91,18 @@ def products_view(request, pk=None):
         context_list = {'title': title,
                         'links_menu': links_menu,
                         'category': category,
-                        'products': products
+                        'products': products,
+                        'basket': basket
                         }
-        return render(request, 'mainapp/products_list.html', context_list)
+        return render(request, 'products_list.html', context_list)
 
     # если нет никакого первичного ключа
     same_products = Product.objects.all()[0:8]
     context_list = {'title': title,
                     'links_menu': links_menu,
-                    'same_products': same_products
+                    'same_products': same_products,
                     }
-    return render(request, 'mainapp/products.html', context_list)
+    return render(request, 'products.html', context_list)
 
 
 def shop_view(request):

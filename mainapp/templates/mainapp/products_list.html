@@ -100,7 +100,7 @@
                                                         </div>
                                                         <div class="col-md-9 col-sm-8 col-xs-12">
                                                             <div class="product-description">
-                                                                <h5><a href="#">Trid Palm</a></h5>
+                                                                <h5><a href="{% url 'basket:add' product.pk %}">{{ product.name }}</a></h5>
                                                                 <div class="price-box">
                                                                     <span class="price">{{ product.price }}</span>
                                                                     <span class="old-price">$110.00</span>
@@ -116,22 +116,22 @@
                                                                 <div class="product-action">
                                                                     <div class="button-group">
                                                                         <div class="product-button">
-                                                                            <button><i class="fa fa-shopping-cart"></i>
-                                                                                Add to Cart
-                                                                            </button>
+																				<button>
+                                                                                    <a href="{% url 'basket:add' product.pk %}">Add to Cart</a>
+                                                                                </button>
                                                                         </div>
                                                                         <div class="product-button-2">
                                                                             <a href="#" data-toggle="tooltip"
-                                                                               title="Wishlist"><i
-                                                                                    class="fa fa-heart-o"></i></a>
+                                                                               title="Wishlist">
+                                                                                <i class="fa fa-heart-o"></i></a>
                                                                             <a href="#" data-toggle="tooltip"
-                                                                               title="Compare"><i
-                                                                                    class="fa fa-signal"></i></a>
+                                                                               title="Compare">
+                                                                                <i class="fa fa-signal"></i></a>
                                                                             <a href="#" class="modal-view"
                                                                                data-toggle="modal"
                                                                                data-target="#productModal"
-                                                                               title="Quickview"><i
-                                                                                    class="fa fa-search-plus"></i></a>
+                                                                               title="Quickview">
+                                                                                <i class="fa fa-search-plus"></i></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>

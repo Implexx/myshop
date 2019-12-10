@@ -73,7 +73,7 @@ sup {
   top: -0.2em;
 }
 a {
-  color: #23a1d1;
+  color: #000000;
   font-family: 'Raleway', sans-serif;
   transition: all 0.3s ease 0s;
   text-decoration:none;
@@ -1458,7 +1458,7 @@ a.posts-read-more:hover {
 	background: #26acce none repeat scroll 0 0;
 	border: 0 none;
 	box-shadow: none;
-	color: #fff;
+	color: #ffffff;
 	display: block;
 	font-weight: 700;
 	line-height: 30px;
