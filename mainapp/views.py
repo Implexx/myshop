@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from .models import Team, Review, BrandLogo, Product
+from .models import Team, Review, BrandLogo, Product, ProductCategory
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
+
+CATEGORIES = ProductCategory.objects.all()[0:2]
+MORE_CATEGORIES = ProductCategory.objects.all()[2:]
 
 
 def main_view(request):
@@ -55,14 +59,53 @@ def product_details_view(request, pk=None):
     return render(request, 'product-details.html', context_list)
 
 
+def products_view(request, pk=None):
+    """
+    Контроллер списка товаров по категориям
+    TODO: разобраться как выбирать нужную картинку из списка, пока выводится только первая
+    :param request:
+    :param pk:
+    :return:
+    """
+    print('pk=', pk)
+
+    title = 'Продукты'
+    links_menu = ProductCategory.objects.all()
+    # если есть первичный ключ
+    if pk is not None:
+        print('pk <> 0')
+        if pk == 0:
+            products = Product.objects.all().order_by('price')
+            category = {'name': 'все'}
+        else:
+            category = get_object_or_404(ProductCategory, pk=pk)
+            products = Product.objects.filter(category__pk=pk).order_by('price')
+            print('products=', products)
+
+        context_list = {'title': title,
+                        'links_menu': links_menu,
+                        'category': category,
+                        'products': products
+                        }
+        return render(request, 'mainapp/products_list.html', context_list)
+
+    # если нет никакого первичного ключа
+    same_products = Product.objects.all()[0:8]
+    context_list = {'title': title,
+                    'links_menu': links_menu,
+                    'same_products': same_products
+                    }
+    return render(request, 'mainapp/products.html', context_list)
+
+
 def shop_view(request):
     context_list = {}
-    return render(request, 'shop.html', context_list)
+    return render(request, 'mainapp/products.html', context_list)
 
 
 def shop_list_view(request):
     context_list = {}
-    return render(request, 'shop-list.html', context_list)
+    return render(request, 'mainapp/products_list.html', context_list)
 
 
 def wishlist_view(request):

@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls', namespace='main')),
     path('auth/', include('authapp.urls', namespace='auth')),
+    # path('products/', include('mainapp.urls', namespace='products')),
 ]
 
 # чтобы Джанго раздавал медиафайлы на этапе разработки
