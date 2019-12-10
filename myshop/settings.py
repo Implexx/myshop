@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'authapp',
+    'basketapp',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'mainapp/templates/mainapp'),
-                 os.path.join(BASE_DIR, 'authapp/templates/authapp')
+                 os.path.join(BASE_DIR, 'authapp/templates/authapp'),
+                 os.path.join(BASE_DIR, 'basketapp/templates/basketapp'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {

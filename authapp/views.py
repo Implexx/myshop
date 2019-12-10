@@ -47,8 +47,8 @@ def register_view(request):
     else:
         register_form = ShopUserRegisterForm()
 
-    content_list = {'title': title, 'register_form': register_form}
-    return render(request, 'authapp/register.html', content_list)
+    context_list = {'title': title, 'register_form': register_form}
+    return render(request, 'authapp/register.html', context_list)
 
 
 # Вьюха для редактирования юзера
@@ -63,6 +63,6 @@ def edit_view(request):
     else:
         edit_form = ShopUserEditForm(instance=request.user)
 
-    content = {'title': title, 'edit_form': edit_form}
+    context_list = {'title': title, 'edit_form': edit_form}
 
-    return render(request, 'authapp/edit.html', content)
+    return render(request, 'authapp/edit.html', context_list)

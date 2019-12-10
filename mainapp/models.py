@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -21,6 +21,16 @@ class ProductCategory(models.Model):
         return self.name
 
 
+class Review(models.Model):
+    name = models.CharField(max_length=32, verbose_name='Имя клиента')
+    text = models.TextField(verbose_name='Текст отзыва', blank=True)
+    rating = models.PositiveIntegerField(verbose_name='Рейтинг товара', default=0)
+    date = models.DateField(verbose_name='Дата отзыва', auto_now_add=True)
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.date)
+
+
 class Product(models.Model):
     """
     Модель продукта
@@ -39,6 +49,7 @@ class Product(models.Model):
     discount = models.DecimalField(verbose_name='Скидка', max_digits=3, decimal_places=0, blank=True, null=True)
     discount_price = models.DecimalField(verbose_name='Цена со скидкой', max_digits=8, decimal_places=2, blank=True,
                                          null=True)
+    rating = models.ForeignKey(Review, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
@@ -49,19 +60,10 @@ class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', null=True, blank=True)
 
 
-class Review(models.Model):
-    name = models.CharField(max_length=32, verbose_name='Имя клиента')
-    text = models.TextField(verbose_name='Текст отзыва', blank=True)
-    rating = models.PositiveIntegerField(verbose_name='Рейтинг товара', default=0)
-    date = models.DateField(verbose_name='Дата отзыва', auto_now_add=True)
-
-    def __str__(self):
-        return '{} - {}'.format(self.name, self.date)
-
-
 class BrandLogo(models.Model):
     name = models.CharField(max_length=32, verbose_name='Название бренда')
     image = models.ImageField(upload_to='brands')
 
     def __str__(self):
         return self.name
+
