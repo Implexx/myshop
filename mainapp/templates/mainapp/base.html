@@ -285,29 +285,23 @@
 							<div class="mainmenu">
 								<nav>
 									<ul>
-										<li><a href="{% url 'main:main' %}">Home</a>
+										<li><a href="{% url 'main:main' %}">Главная</a></li>
+										<li class="hot"><a href="{% url 'main:hot' %}">Горячие товары</a></li>
+										<li class="new"><a href="{% url 'main:category'%}">Новинки</a></li>
+                                        <li><a href="{% url 'main:category'%}">Категории</a></li>
+										<li><a href="#">Страницы</a>
 											<ul>
-												<li><a href="{% url 'main:main' %}">Home Versions 1</a></li>
-												<li><a href="{% url 'main:main' %}">Home Versions 2</a></li>
-											</ul>
-										</li>
-										<li><a href="{% url 'main:about' %}">About Us</a></li>
-										<li class="hot"><a href="{% url 'main:shop' %}">Bestseller Products</a></li>
-										<li class="new"><a href="{% url 'main:shop_list' %}">New Products</a></li>
-										<li><a href="{% url 'main:shop' %}">Special Products</a></li>
-										<li><a href="#">Pages</a>
-											<ul>
-												<li><a href="{% url 'main:cart' %}">Cart</a></li>
+												<li><a href="{% url 'basket:view' %}">Корзина</a></li>
 												<li><a href="{% url 'main:checkout' %}">Checkout</a></li>
-												<li><a href="{% url 'main:account' %}">Create Account</a></li>
-												<li><a href="{% url 'main:my_account' %}">My Account</a></li>
-												<li><a href="{% url 'main:product_details' %}">Product details</a></li>
-												<li><a href="{% url 'main:shop' %}">Shop Grid View</a></li>
-												<li><a href="{% url 'main:shop_list' %}">Shop List View</a></li>
-												<li><a href="{% url 'main:wishlist' %}">Wish List</a></li>
+												<li><a href="{% url 'auth:register' %}">Создать аккаунт</a></li>
+												<li><a href="{% url 'auth:edit' %}">Мой аккаунт</a></li>
+												<li><a href="{% url 'main:product_details' %}">Карточка продукта</a></li>
+												<li><a href="{% url 'main:shop' %}">Горячие товары</a></li>
+												<li><a href="{% url 'main:shop_list' %}">Категории</a></li>
 											</ul>
 										</li>
-										<li><a href="{% url 'mainapp:contact' %}">Contact Us</a></li>
+                                        <li><a href="{% url 'main:about' %}">О нас</a></li>
+										<li><a href="{% url 'mainapp:contact' %}">Контакты</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -322,31 +316,25 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<nav id="mobile-menu">
-								<ul>
-									<li><a href="{% url 'main:main' %}">Home</a>
-										<ul>
-											<li><a href="{% url 'main:main' %}">Home Page 1</a></li>
-											<li><a href="{% url 'main:main' %}">Home Page 2</a></li>
-										</ul>
-									</li>
-									<li><a href="{% url 'main:about' %}">About Us</a></li>
-									<li><a href="{% url 'main:shop' %}">Bestseller Products</a></li>
-									<li><a href="{% url 'main:shop_list' %}">New Products</a></li>
-									<li><a href="#">Pages</a>
-										<ul>
-											<li><a href="{% url 'main:cart' %}">Cart</a></li>
-											<li><a href="{% url 'main:checkout' %}">Checkout</a></li>
-											<li><a href="{% url 'main:account' %}">Create Account</a></li>
-											<li><a href="{% url 'main:account' %}">Login</a></li>
-											<li><a href="{% url 'main:my_account' %}">My Account</a></li>
-											<li><a href="{% url 'main:product_details' %}">Product details</a></li>
-											<li><a href="{% url 'main:shop' %}">Shop Grid View</a></li>
-											<li><a href="{% url 'main:shop_list' %}">Shop List View</a></li>
-											<li><a href="{% url 'main:wishlist' %}">Wish List</a></li>
-										</ul>
-									</li>
-									<li><a href="{% url 'main:contact' %}">Contact Us</a></li>
-								</ul>
+                                <ul>
+                                    <li><a href="{% url 'main:main' %}">Главная</a></li>
+                                    <li class="hot"><a href="{% url 'main:hot' %}">Горячие товары</a></li>
+                                    <li class="new"><a href="{% url 'main:category' %}">Новинки</a></li>
+                                    <li><a href="{% url 'main:category' %}">Категории</a></li>
+                                    <li><a href="#">Страницы</a>
+                                        <ul>
+                                            <li><a href="{% url 'basket:view' %}">Корзина</a></li>
+                                            <li><a href="{% url 'main:checkout' %}">Checkout</a></li>
+                                            <li><a href="{% url 'auth:register' %}">Создать аккаунт</a></li>
+                                            <li><a href="{% url 'auth:edit' %}">Мой аккаунт</a></li>
+                                            <li><a href="{% url 'main:product_details' %}">Карточка продукта</a></li>
+                                            <li><a href="{% url 'main:shop' %}">Горячие товары</a></li>
+                                            <li><a href="{% url 'main:shop_list' %}">Категории</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'main:about' %}">О нас</a></li>
+                                    <li><a href="{% url 'mainapp:contact' %}">Контакты</a></li>
+                                </ul>
 							</nav>
 						</div>
 					</div>
@@ -487,27 +475,27 @@
 		<!-- Google Map js -->
         <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-		<script>
-			function initialize() {
-				var mapOptions = {
-					zoom: 5,
-					scrollwheel: false,
-					center: new google.maps.LatLng(40.7058316, -74.2581978)
-				};
+        <script>
+            function initialize() {
+                var mapOptions = {
+                    zoom: 5,
+                    scrollwheel: false,
+                    center: new google.maps.LatLng(40.7058316, -74.2581978)
+                };
 
-				var map = new google.maps.Map(document.getElementById('googleMap'),
-					mapOptions);
+                var map = new google.maps.Map(document.getElementById('googleMap'),
+                    mapOptions);
 
-				var marker = new google.maps.Marker({
-					position: map.getCenter(),
-					animation:google.maps.Animation.BOUNCE,
-					icon: 'img/map-marker.png',
-					map: map
-				});
-			}
+                var marker = new google.maps.Marker({
+                    position: map.getCenter(),
+                    animation: google.maps.Animation.BOUNCE,
+                    icon: 'img/map-marker.png',
+                    map: map
+                });
+            }
 
-			google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
 
 		<!-- plugins JS
 		============================================ -->

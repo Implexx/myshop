@@ -1752,7 +1752,7 @@ ul.footer-content.box-information li a {
   float: right;
 }
 #scrollUp {
-  background: #e95668 url("img/icon/back-top.png") no-repeat scroll 0 0;
+  background: #e95668 url("../img/icon/back-top.png") no-repeat scroll 0 0;
   bottom: 35px;
   height: 54px;
   right: 20px;
@@ -1761,7 +1761,7 @@ ul.footer-content.box-information li a {
   width: 54px;
 }
 #scrollUp:hover {
-  background: #26acce url("img/icon/back-top.png") no-repeat scroll 0 -56px;
+  background: #26acce url("../img/icon/back-top.png") no-repeat scroll 0 -56px;
 }
 /*=========================== 
  15. Product Modal
